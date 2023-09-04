@@ -1,18 +1,10 @@
 ---
 layout: page
-title: About
+title: A propos
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+Cette page est une tentative de lister les évènements de cybersécurité qui constituent le paysage français cyber.
+Si vous souhaitez corriger une information, ajouter votre évènement ou de manière générale modifier ce contenu, vous pouvez soumettre une PR sur ce [repo Github](https://github.com/alexandredubois/cybersecurity-events)
 
 
-[jekyll-organization]: https://github.com/jekyll

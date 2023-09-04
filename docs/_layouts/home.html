@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+    <ul class="">
+    {% for event in site.data.events.events %}
+      <li><a class="post-link" href="{{ event.Website }}" target="_blank">{{ event.Name }}</a></li>
+    {% endfor %}
+
+</ul>
+
+</div>
