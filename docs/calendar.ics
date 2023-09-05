@@ -8,11 +8,11 @@ PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 {% for event in site.data.events.events %}
 {% if event.StartDate != "TBD" %}
 BEGIN:VEVENT
-UID:{{ event.Name | slugify }}
+UID:{{ event.Name | slugify }}{{ event.Year }}
 DTSTAMP:{{ "now" | date: "%Y%m%dT%H%M%S" }}
-DTSTART;VALUE=DATE:{{ event.StartDate | date: "%Y%m%d" }}
+DTSTART:{{ event.StartDate | date: "%Y%m%d" }}
 {% if event.StartDate != event.EndDate %}
-DTEND;VALUE=DATE:{{ event.EndDate | date: "%Y%m%d" }}
+DTEND;TZID=Europe/Paris:{{ event.EndDate | date: "%Y%m%d" }}T235959
 {% endif %}
 SUMMARY:{{ event.Name }}
 LOCATION:{{ event.Location }}
