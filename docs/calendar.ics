@@ -16,6 +16,10 @@ DTEND;TZID=Europe/Paris:{{ event.EndDate | date: "%Y%m%d" }}T235959
 {% endif %}
 SUMMARY:{{ event.Name }}
 LOCATION:{{ event.Location }}
+LAST-MODIFIED:{{ "now" | date: "%Y%m%dT%H%M%S" }}
+TRANSP:TRANSPARENT
+URL:{{ event.Website }}
+DESCRIPTION:Site de l'évènement : {{ event.Website }}\n {{ event.Type }}\n {{ event.SubDetails }}
 END:VEVENT
 {% endif %}
 {% endfor %}
