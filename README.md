@@ -45,3 +45,5 @@ events:
     SubDetails: "Start at 4pm, Conferences from 4pm to 8pm, CTF afterwards"
     Website: "https://www.purplepillchallenge.fr/"
   ...
+```
+Les évènements sont listés dans l'ordre chronologique du fichier `events.yml`
