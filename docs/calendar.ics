@@ -4,6 +4,16 @@ layout: null
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
+URL:https://alexandredubois.github.io/cybersecurity-events/calendar.ics
+NAME:Evènements Cyber
+X-WR-CALDESC:Evènements Cyber
+TIMEZONE-ID:Europe/Paris
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+COLOR:34:50:105
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
 
 {% for event in site.data.events.events %}
 {% if event.StartDate != "TBD" %}
