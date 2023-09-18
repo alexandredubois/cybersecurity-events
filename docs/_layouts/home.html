@@ -25,4 +25,38 @@ layout: default
 
 </ul>
 
+<link href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css' rel='stylesheet' />
+  <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
+  <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script>
+  <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js'></script>
+<div id='calendar'></div>
+  
+  <script>
+    $(document).ready(function() {
+      $.get("https://alexandredubois.github.io/cybersecurity-events/calendar.ics", function(data) {
+        var jcalData = ICAL.parse(data);
+        var comp = new ICAL.Component(jcalData);
+        var vevents = comp.getAllSubcomponents("vevent");
+
+        var events = vevents.map(function(vevent) {
+          var event = new ICAL.Event(vevent);
+          return {
+            start: event.startDate.toJSDate(),
+            end: event.endDate.toJSDate(),
+            summary: event.summary,
+            title: event.summary
+          };
+        });
+
+        $('#calendar').fullCalendar({
+          events: events,
+          eventRender: function(event, element) {
+            element.attr('title', event.summary);
+          }
+        });
+      });
+    });
+  </script>
+
 </div>
