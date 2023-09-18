@@ -51,6 +51,7 @@ layout: default
 
         $('#calendar').fullCalendar({
           events: events,
+          displayEventTime: false,
           eventRender: function(event, element) {
             element.attr('title', event.summary);
           }
