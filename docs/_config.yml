@@ -21,8 +21,7 @@
 title: Evènements Cybersécurité
 email: contact [AT] alexandredubois [DOT] com
 description: >- # this means to ignore newlines until "baseurl:"
-  Voici une liste des évènements relatifs à la cybersécurité qui définissent le paysage cyber français.
-  Pour contribuer au projet vous pouvez vous rendre ici : https://github.com/alexandredubois/cybersecurity-events.
+  Pour contribuer au projet vous pouvez vous rendre ici : https://github.com/alexandredubois/cybersecurity-events
 domain: alexandredubois.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
 url: https://alexandredubois.github.io  # the base hostname and protocol for your site, e.g. http://example.com
 baseurl: /cybersecurity-events/      # place folder name if the site is served in a subfolder
