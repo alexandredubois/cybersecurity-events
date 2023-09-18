@@ -47,3 +47,8 @@ events:
   ...
 ```
 Les évènements sont listés dans l'ordre chronologique du fichier `events.yml`
+
+## Lancer le site localement
+
+Pour travailler sur le site en local avant de publier des modifications en ligne, il faut avoir installé Ruby et Jekyll localement, se placer dans le répertoire du projet et lancer la commande `bundle exec jekyll serve --livereload`
+Le site devrait devenir accessible à l'URL suivante : `http://localhost:4000/cybersecurity-events/`
