@@ -45,7 +45,8 @@ layout: default
             start: event.startDate.toJSDate(),
             end: event.endDate.toJSDate(),
             summary: event.summary,
-            title: event.summary
+            title: event.summary,
+            url: event.component.getFirstPropertyValue("url")
           };
         });
 
@@ -54,6 +55,7 @@ layout: default
           displayEventTime: false,
           eventRender: function(event, element) {
             element.attr('title', event.summary);
+            element.attr('target', '_blank');
           }
         });
       });
