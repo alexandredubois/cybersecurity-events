@@ -87,7 +87,7 @@ events:
     Type: "CTF"
     SubDetails: "TRACS est une compétition de data science, de sécurité et de cryptanalyse organisée conjointement par ViaRézo et la DGSE. La quatrième édition de ce challenge inter-écoles aura lieu à CentraleSupélec"
     Website: "https://tracs.viarezo.fr/"
-  - Year: "2023"
+  - Year: "2024"
     Name: "Risk Summit"
     StartDate: "2024-03-07"
     EndDate: "2024-03-07"
