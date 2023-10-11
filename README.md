@@ -22,7 +22,7 @@ Si vous souhaitez contribuer à ce projet en ajoutant ou modifiant un événemen
 ## Format du fichier `events.yml`
 
 Il suffit de mettre à jour ce fichier pour que le site et le calendrier iCal soit actualisé.
-Seules l'évènement avec une date précise aparaissent dans le calendrier iCal. Ceux dont la date n'a pas encore été déterminée (TBD) n'apparaissent que sur la page web.
+Seuls les évènements avec une date précise aparaissent dans le calendrier iCal et sur le calendrier visuel. Ceux dont la date n'a pas encore été déterminée (TBD) n'apparaissent que sur la page web.
 Le fichier `events.yml` suit une structure spécifique. Voici un exemple avec la description des champs :
 
 ```yml
