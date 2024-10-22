@@ -50,5 +50,11 @@ Les évènements sont listés dans l'ordre chronologique du fichier `events.yml`
 
 ## Lancer le site localement
 
+### Installer la stack nécessaire
+1) Il faut commencer par installer Ruby
+2) Installer jekyll et bundler via la commande `gem install bundler jekyll`
+3) Ensuite cloner le repo, se placer via une invite de commande dans le répertoire "docs" du repo et lancer la commande `bundle install`
+
+### Editer le projet et visualiser les modifiations
 Pour travailler sur le site en local avant de publier des modifications en ligne, il faut avoir installé Ruby et Jekyll localement, se placer dans le répertoire du projet et lancer la commande `bundle exec jekyll serve --livereload`
 Le site devrait devenir accessible à l'URL suivante : `http://localhost:4000/cybersecurity-events/`
