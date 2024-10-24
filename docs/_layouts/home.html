@@ -10,14 +10,15 @@ layout: default
   {{ content }}
 
     <ul class="">
-    {% for event in site.data.events.events %}
+    {% assign sorted_events = site.data.events.events | sort: 'StartDate' | reverse %}
+    {% for event in sorted_events %}
     
     
       <li>
         {% if event.StartDate != "TBD" %}
           {{ event.StartDate }} |
         {% else %}
-        <img alt="CFP devops barcelona" src="https://img.shields.io/badge/TBD-{{ event.Maybe }}-blue" style="max-width: 100%;">&nbsp;
+        <img alt="TBD To Be Define badge" src="https://img.shields.io/badge/TBD-{{ event.Maybe }}-blue" style="max-width: 100%;">&nbsp;
         {%- endif -%}
         <a class="" href="{{ event.Website }}" target="_blank">{{ event.Name }}</a> - {{ event.Location }}
       </li>
