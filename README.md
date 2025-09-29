@@ -15,15 +15,15 @@ Si vous voulez bénéficier des mises à jour dans votre agenda, il suffit de ra
 Si vous souhaitez contribuer à ce projet en ajoutant ou modifiant un événement, voici la marche à suivre :
 
 1. Clonez le dépôt GitHub : [Cybersecurity Events Repo](https://github.com/alexandredubois/cybersecurity-events)
-2. Naviguez vers le fichier des événements : [events.yml](https://github.com/alexandredubois/cybersecurity-events/blob/main/docs/_data/events.yml)
-3. Éditez le fichier `events.yml` pour ajouter ou modifier les informations concernant l'événement.
+2. Naviguez vers le fichier des événements : [2026_events.yml](https://github.com/alexandredubois/cybersecurity-events/blob/main/docs/_data/2026_events.yml)
+3. Éditez le fichier `XXXX_events.yml` pour ajouter ou modifier les informations concernant l'événement (où XXXX est la date de l'année de l'évènement).
 4. Créez une Pull Request (PR) pour soumettre vos modifications.
 
 ## Format du fichier `events.yml`
 
 Il suffit de mettre à jour ce fichier pour que le site et le calendrier iCal soit actualisé.
 Seuls les évènements avec une date précise aparaissent dans le calendrier iCal et sur le calendrier visuel. Ceux dont la date n'a pas encore été déterminée (TBD) n'apparaissent que sur la page web.
-Le fichier `events.yml` suit une structure spécifique. Voici un exemple avec la description des champs :
+Le fichier `XXXX_events.yml` suit une structure spécifique. Voici un exemple avec la description des champs :
 
 ```yml
 events:
