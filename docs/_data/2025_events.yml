@@ -149,6 +149,16 @@ events:
     Website: "https://www.hexacon.fr/"
 
   - Year: "2025"
+    Name: "SecSea"
+    StartDate: "2025-10-10"
+    EndDate: "2025-10-11"
+    Maybe: "October"
+    Location: "La Ciotat (13)"
+    Type: "Conferences and CTF"
+    SubDetails: ""
+    Website: "https://secsea.org/"
+
+  - Year: "2025"
     Name: "Unlock Your Brain, Harden Your System"
     StartDate: "2025-11-08"
     EndDate: "2025-11-09"
