@@ -19,21 +19,27 @@ layout: default
   {% endfor %}
   {% assign sorted_events = all_events | sort: 'StartDate' | reverse %}
   {% assign current_year = 'now' | date: '%Y' %}
+  {% assign current_year_num = current_year | plus: 0 %}
   {% assign event_years = sorted_events | map: 'Year' | uniq %}
+  {% assign event_years = event_years | sort | reverse %}
+  {% assign today_epoch = 'now' | date: '%s' %}
 
   <style>
     .events-controls { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
     .toggle-year { border: 1px solid #ccc; background: #f8f8f8; padding: 0.35rem 0.75rem; border-radius: 4px; cursor: pointer; font-size: 0.95rem; }
     .toggle-year.is-active { background: #1e90ff; border-color: #1e90ff; color: #fff; }
     .event-item.is-hidden { display: none; }
+    .event-item.is-past { opacity: 0.55; }
   </style>
 
   <div class="events-controls">
-    <button type="button" class="toggle-year is-active" data-year="{{ current_year }}">{{ current_year }}</button>
     {% for year in event_years %}
-      {% unless year == current_year %}
-        <button type="button" class="toggle-year" data-year="{{ year }}">{{ year }}</button>
-      {% endunless %}
+      {% assign year_num = year | plus: 0 %}
+      {% assign is_future_or_current = false %}
+      {% if year_num >= current_year_num %}
+        {% assign is_future_or_current = true %}
+      {% endif %}
+      <button type="button" class="toggle-year{% if is_future_or_current %} is-active{% endif %}" data-year="{{ year }}">{{ year }}</button>
     {% endfor %}
   </div>
 
@@ -41,7 +47,19 @@ layout: default
     {% for event in sorted_events %}
 
 
-      <li class="event-item{% unless event.Year == current_year %} is-hidden{% endunless %}" data-year="{{ event.Year }}">
+      {% assign event_year_num = event.Year | plus: 0 %}
+      {% assign event_last_day = event.EndDate %}
+      {% if event_last_day == nil or event_last_day == '' or event_last_day == 'TBD' %}
+        {% assign event_last_day = event.StartDate %}
+      {% endif %}
+      {% assign is_past = false %}
+      {% if event_last_day and event_last_day != 'TBD' and event_last_day contains '-' %}
+        {% assign event_last_day_epoch = event_last_day | date: '%s' %}
+        {% if event_last_day_epoch < today_epoch %}
+          {% assign is_past = true %}
+        {% endif %}
+      {% endif %}
+      <li class="event-item{% if event_year_num < current_year_num %} is-hidden{% endif %}{% if is_past %} is-past{% endif %}" data-year="{{ event.Year }}">
         {% if event.StartDate != "TBD" %}
           {{ event.StartDate }} |
         {% else %}
