@@ -9,6 +9,10 @@ layout: default
 
   {{ content }}
 
+  {% assign sorted_events = site.data.events.events | sort: 'StartDate' | reverse %}
+  {% assign current_year = 'now' | date: '%Y' %}
+  {% assign event_years = sorted_events | map: 'Year' | uniq %}
+
   <style>
     .events-controls { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
     .toggle-year { border: 1px solid #ccc; background: #f8f8f8; padding: 0.35rem 0.75rem; border-radius: 4px; cursor: pointer; font-size: 0.95rem; }
@@ -17,16 +21,19 @@ layout: default
   </style>
 
   <div class="events-controls">
-    <button type="button" class="toggle-year" data-year="2024">2024</button>
-    <button type="button" class="toggle-year" data-year="2023">2023</button>
+    <button type="button" class="toggle-year is-active" data-year="{{ current_year }}">{{ current_year }}</button>
+    {% for year in event_years %}
+      {% unless year == current_year %}
+        <button type="button" class="toggle-year" data-year="{{ year }}">{{ year }}</button>
+      {% endunless %}
+    {% endfor %}
   </div>
 
     <ul class="events-list">
-    {% assign sorted_events = site.data.events.events | sort: 'StartDate' | reverse %}
     {% for event in sorted_events %}
 
 
-      <li class="event-item{% if event.Year == "2023" or event.Year == "2024" %} is-hidden{% endif %}" data-year="{{ event.Year }}">
+      <li class="event-item{% unless event.Year == current_year %} is-hidden{% endunless %}" data-year="{{ event.Year }}">
         {% if event.StartDate != "TBD" %}
           {{ event.StartDate }} |
         {% else %}
