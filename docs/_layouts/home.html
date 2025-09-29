@@ -9,12 +9,24 @@ layout: default
 
   {{ content }}
 
-    <ul class="">
+  <style>
+    .events-controls { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .toggle-year { border: 1px solid #ccc; background: #f8f8f8; padding: 0.35rem 0.75rem; border-radius: 4px; cursor: pointer; font-size: 0.95rem; }
+    .toggle-year.is-active { background: #1e90ff; border-color: #1e90ff; color: #fff; }
+    .event-item.is-hidden { display: none; }
+  </style>
+
+  <div class="events-controls">
+    <button type="button" class="toggle-year" data-year="2024">2024</button>
+    <button type="button" class="toggle-year" data-year="2023">2023</button>
+  </div>
+
+    <ul class="events-list">
     {% assign sorted_events = site.data.events.events | sort: 'StartDate' | reverse %}
     {% for event in sorted_events %}
-    
-    
-      <li>
+
+
+      <li class="event-item{% if event.Year == "2023" or event.Year == "2024" %} is-hidden{% endif %}" data-year="{{ event.Year }}">
         {% if event.StartDate != "TBD" %}
           {{ event.StartDate }} |
         {% else %}
@@ -23,8 +35,7 @@ layout: default
         <a class="" href="{{ event.Website }}" target="_blank">{{ event.Name }}</a> - {{ event.Location }}
       </li>
     {% endfor %}
-
-</ul>
+    </ul>
 
 <link href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css' rel='stylesheet' />
   <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
@@ -58,6 +69,29 @@ layout: default
             element.attr('title', event.summary);
             element.attr('target', '_blank');
           }
+        });
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var buttons = document.querySelectorAll('.toggle-year');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          var year = button.getAttribute('data-year');
+          var items = document.querySelectorAll('.event-item[data-year="' + year + '"]');
+          if (!items.length) {
+            return;
+          }
+
+          var shouldShow = items[0].classList.contains('is-hidden');
+          items.forEach(function(item) {
+            item.classList.toggle('is-hidden', !shouldShow);
+          });
+
+          button.classList.toggle('is-active', shouldShow);
         });
       });
     });
