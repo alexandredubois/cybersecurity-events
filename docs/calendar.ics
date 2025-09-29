@@ -13,7 +13,16 @@ X-PUBLISHED-TTL:PT12H
 COLOR:34:50:105
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-{% for event in site.data.events.events %}
+{% assign all_events = '' | split: '' %}
+{% for data_item in site.data %}
+{% assign key = data_item[0] %}
+{% assign value = data_item[1] %}
+{% if key contains '_events' and value.events %}
+{% assign all_events = all_events | concat: value.events %}
+{% endif %}
+{% endfor %}
+{% assign calendar_events = all_events | sort: 'StartDate' %}
+{% for event in calendar_events %}
 {% if event.StartDate != "TBD" %}
 BEGIN:VEVENT
 UID:{{ event.Name | slugify: "latin" }}{{ event.Year }}

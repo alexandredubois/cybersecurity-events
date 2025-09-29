@@ -9,7 +9,15 @@ layout: default
 
   {{ content }}
 
-  {% assign sorted_events = site.data.events.events | sort: 'StartDate' | reverse %}
+  {% assign all_events = '' | split: '' %}
+  {% for data_item in site.data %}
+    {% assign key = data_item[0] %}
+    {% assign value = data_item[1] %}
+    {% if key contains '_events' and value.events %}
+      {% assign all_events = all_events | concat: value.events %}
+    {% endif %}
+  {% endfor %}
+  {% assign sorted_events = all_events | sort: 'StartDate' | reverse %}
   {% assign current_year = 'now' | date: '%Y' %}
   {% assign event_years = sorted_events | map: 'Year' | uniq %}
 
