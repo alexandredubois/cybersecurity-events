@@ -2,33 +2,50 @@
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
   <div class="wrapper">
+    <div class="footer-header">
+      <h2 class="footer-heading">{{ site.title | escape }}</h2>
+      <p class="footer-tagline">{{- site.description | escape -}}</p>
+    </div>
 
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
+    <div class="footer-grid">
+      <div class="footer-block">
+        <h3 class="footer-title">Contact</h3>
+        <ul class="footer-list">
           <li class="p-name">
             {%- if site.author -%}
               {{ site.author | escape }}
             {%- else -%}
               {{ site.title | escape }}
             {%- endif -%}
-            </li>
+          </li>
+          <li>{{ site.email | escape }}</li>
         </ul>
       </div>
-      <div class="footer-col footer-col-2">
-        <a href="./calendar.ics">Télécharger le calendrier</a>
-      </div>
-      <div class="footer-col footer-col-2">
-        {%- include social.html -%}
+
+      <div class="footer-block">
+        <h3 class="footer-title">Ressources</h3>
+        <ul class="footer-list">
+          <li><a href="./calendar.ics">TÃ©lÃ©charger le calendrier</a></li>
+          <li class="footer-social">{%- include social.html -%}</li>
+        </ul>
       </div>
 
-      <div class="footer-col footer-col-3">
-        <p>{{- site.description | escape -}}</p>
+      <div class="footer-block">
+        <h3 class="footer-title">Contributeurs</h3>
+        {% if site.data.contributors and site.data.contributors.contributors and site.data.contributors.contributors.size > 0 %}
+          <ul class="contributors-list">
+            {% for contributor in site.data.contributors.contributors %}
+              <li>
+                <a href="https://github.com/{{ contributor }}" target="_blank" rel="noopener">
+                  @{{ contributor }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="contributors-empty">Liste des contributeurs disponible sur GitHub.</p>
+        {% endif %}
       </div>
     </div>
-
   </div>
-
 </footer>
