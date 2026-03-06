@@ -22,7 +22,6 @@ layout: default
   {% assign current_year_num = current_year | plus: 0 %}
   {% assign event_years = sorted_events | map: 'Year' | uniq %}
   {% assign event_years = event_years | sort | reverse %}
-  {% assign today_epoch = 'now' | date: '%s' %}
 
   <style>
     .events-controls { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
@@ -52,14 +51,7 @@ layout: default
       {% if event_last_day == nil or event_last_day == '' or event_last_day == 'TBD' %}
         {% assign event_last_day = event.StartDate %}
       {% endif %}
-      {% assign is_past = false %}
-      {% if event_last_day and event_last_day != 'TBD' and event_last_day contains '-' %}
-        {% assign event_last_day_epoch = event_last_day | date: '%s' %}
-        {% if event_last_day_epoch < today_epoch %}
-          {% assign is_past = true %}
-        {% endif %}
-      {% endif %}
-      <li class="event-item{% if event_year_num < current_year_num %} is-hidden{% endif %}{% if is_past %} is-past{% endif %}" data-year="{{ event.Year }}">
+      <li class="event-item{% if event_year_num < current_year_num %} is-hidden{% endif %}" data-year="{{ event.Year }}" data-start-date="{{ event.StartDate }}" data-end-date="{{ event_last_day }}">
         {% if event.StartDate != "TBD" %}
           {{ event.StartDate }} |
         {% else %}
@@ -110,6 +102,39 @@ layout: default
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var buttons = document.querySelectorAll('.toggle-year');
+      var items = document.querySelectorAll('.event-item');
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      function parseDate(value) {
+        if (!value || value === 'TBD') {
+          return null;
+        }
+        var parts = value.split('-');
+        if (parts.length !== 3) {
+          return null;
+        }
+        var year = Number(parts[0]);
+        var month = Number(parts[1]) - 1;
+        var day = Number(parts[2]);
+        if (!year || month < 0 || day <= 0) {
+          return null;
+        }
+        return new Date(year, month, day);
+      }
+
+      items.forEach(function(item) {
+        var endDateValue = item.getAttribute('data-end-date');
+        var startDateValue = item.getAttribute('data-start-date');
+        var endDate = parseDate(endDateValue) || parseDate(startDateValue);
+        if (!endDate) {
+          return;
+        }
+        endDate.setHours(0, 0, 0, 0);
+        if (endDate < today) {
+          item.classList.add('is-past');
+        }
+      });
 
       buttons.forEach(function(button) {
         button.addEventListener('click', function() {
