@@ -60,6 +60,16 @@ events:
     Website: "https://europe.forum-incyber.com/en/home-en/"
 
   - Year: "2026"
+    Name: "Hack'In"
+    StartDate: "2026-04-10"
+    EndDate: "2026-04-11"
+    Maybe: ""
+    Location: "Ynov Campus, Aix-en-Provence (13)"
+    Type: "Conferences, CTF"
+    SubDetails: ""
+    Website: "https://hackin.fr/"
+
+  - Year: "2026"
     Name: "Botconf"
     StartDate: "2026-04-14"
     EndDate: "2026-04-17"
@@ -118,6 +128,16 @@ events:
     Type: "Conferences, CTF"
     SubDetails: ""
     Website: ""
+
+  - Year: "2026"
+    Name: "CYCOM (Cycom Hacking Conference)"
+    StartDate: "2026-04-24"
+    EndDate: "2026-04-25"
+    Maybe: ""
+    Location: "Espace Le Kiasma, Castelnau-Le-Lez (34)"
+    Type: "Conferences, CTF"
+    SubDetails: ""
+    Website: "https://www.cycomhackingconference.com/"
 
   - Year: "2026"
     Name: "Sth4ck"
