@@ -120,6 +120,16 @@ events:
     Website: ""
 
   - Year: "2026"
+    Name: "Sth4ck"
+    StartDate: "2026-05-29"
+    EndDate: "2026-05-30"
+    Maybe: ""
+    Location: "Cité du Vin, Bordeaux (33)"
+    Type: "Conferences, CTF"
+    SubDetails: ""
+    Website: "https://www.sthack.fr/"
+
+  - Year: "2026"
     Name: "SSTIC"
     StartDate: "2026-06-02"
     EndDate: "2026-06-05"
